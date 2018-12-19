@@ -30,3 +30,8 @@ def login(req):
 def index(req):
 	username = req.session.get('username','')
 	return render_to_response('index.html',{'username':username})
+	
+def logout(req):
+	if req.session['username']:
+		del req.session['username']
+	return HttpResponse('logout ok')		

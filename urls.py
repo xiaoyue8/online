@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/$','demo.views.login'),
     url(r'^index/$','demo.views.index'),
+    url(r'^logout/$','demo.views.logout'),
 )
