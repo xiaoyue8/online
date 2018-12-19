@@ -19,7 +19,7 @@ def login(req):
 			
 			re = auth.authenticate(username=username,password=password)
 			if re is not None: 
-				auth.login(req,re)
+				req.session['username'] = username
 				return HttpResponseRedirect('/index/')
 			else:
 				return HttpResponseRedirect('/login/')
@@ -28,5 +28,5 @@ def login(req):
 	return render_to_response('login.html',{'uf':uf})
 	
 def index(req):
-	username = User.objects.get(username__exact='dd')
+	username = req.session.get('username','')
 	return render_to_response('index.html',{'username':username})
